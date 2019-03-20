@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# Author: Daniel Sauder
+# Author: Daniel Sauder, Florian Saager
 # License: https://www.gnu.org/licenses/gpl.txt or LICENSE file
 # Web: https://github.com/govolution/avet
 
@@ -17,8 +17,7 @@ banner = """
  ___|  '-'     '    ""       '-'   '-.'    '`      |____
 jgs~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-AVET 1.2 Blackhat USA 2017 edition
-by Daniel Sauder
+AVET Fabric by Daniel Sauder, Florian Saager
 """
 
 def rlinput(prompt, prefill=''):
@@ -51,11 +50,12 @@ commands.append("#/bin/bash")
 with open(fname) as fi:
 	for line in fi:
 		line=line.rstrip()
-		if line[0:2]!="#!" and line[0]=="#":
-			print(line.lstrip('#').lstrip())
-		elif line[0:2]!="#!":
-			cmd=rlinput("$ ", line)
-			commands.append(cmd)
+		if len(line) != 0:
+			if line[0:2]!="#!" and line[0]=="#":
+				print(line.lstrip('#').lstrip())
+			elif line[0:2]!="#!":
+				cmd=rlinput("$ ", line)
+				commands.append(cmd)
 
 print("\nThe following commands will be executed:")
 
